@@ -38,18 +38,5 @@ pipeline {
         }
     }
 
-    post {
-    always {
-        // Envoyer un email à la fin de chaque exécution, réussie ou non
-        mail(
-            to: 'aboubacarsidick.fofana@kolyya.com',
-            subject: "Résultat du Build: ${currentBuild.fullDisplayName}",
-            body: """<h1>Rapport de Build</h1>
-                     <p>Le build <strong>${currentBuild.fullDisplayName}</strong> a le statut: 
-                     <strong>${currentBuild.result}</strong></p>
-                     <p>Voir les détails <a href="${env.BUILD_URL}">ici</a>.</p>""",
-            mimeType: 'text/html'
-        )
-    }
 }
-}
+
