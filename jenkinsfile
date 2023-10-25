@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
         stage('Checkout') {
             steps {
                 checkout scm
@@ -26,11 +31,11 @@ pipeline {
             }
         }
 
-        stage('Archive') {
-            steps {
-                archiveArtifacts artifacts: 'build/**/*', allowEmptyArchive: true
-            }
-        }
+        // stage('Archive') {
+        //     steps {
+        //         archiveArtifacts artifacts: 'build/**/*', allowEmptyArchive: true
+        //     }
+        // }
     }
 
     post {
