@@ -45,14 +45,7 @@ pipeline {
                 archiveArtifacts artifacts: 'build/**/*', allowEmptyArchive: true
             }
         }
-    post {
-      success {
-        notifyBuild('SUCCESS', 'Build réussi')
-      }
-      failure {
-        notifyBuild('FAILURE', 'Build échoué')
-      }
-    }
+    
     
     }
 
