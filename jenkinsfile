@@ -2,15 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Notify GitHub') {
-          steps {
-            script {
-              // Marquer le début du build
-              currentBuild.result = 'SUCCESS'
-              notifyBuild('PENDING', 'Build démarré')
-            }
-          }
-        }
         stage('Clean Workspace') {
             steps {
                 cleanWs()
