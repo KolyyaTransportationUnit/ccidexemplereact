@@ -1,0 +1,18 @@
+# Utilisez une image de base avec Node.js
+FROM node:14
+
+WORKDIR /app
+
+# Copiez les fichiers package.json et package-lock.json pour installer les dépendances
+COPY package*.json ./
+
+RUN npm install
+
+# Copiez le reste des fichiers
+COPY . .
+
+# Exposez le port sur lequel le serveur de développement s'exécute (habituellement 3000 pour create-react-app)
+EXPOSE 3000
+
+# Démarrez le serveur de développement
+CMD ["npm", "start"]
