@@ -54,14 +54,6 @@ pipeline {
       }
     }
     
-    def notifyBuild(String buildStatus, String buildMessage) {
-      step([
-        $class: 'GitHubCommitStatusSetter',
-        reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/KolyyaTransportationUnit/ccidexemplereact.git"], // Remplacez USER/REPO par votre utilisateur et dépôt
-        contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "ci/jenkins"],
-        statusResultSource: [$class: 'ConditionalStatusResultSource', results: [[$class: 'AnyBuildResult', message: buildMessage, state: buildStatus]]]
-      ])
-    }
     }
 
 }
