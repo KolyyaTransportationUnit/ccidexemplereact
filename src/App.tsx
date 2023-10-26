@@ -16,10 +16,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React i learn React typescript
         </a>
         <div className="App">
-          <h1>Hello, Sidick!</h1>
+          <h1>Hello, Sidick! Pull request</h1>
         </div>
       </header>
     </div>
