@@ -20,7 +20,7 @@ describe('App Component', () => {
     expect(linkElement).toHaveAttribute('href', 'https://reactjs.org');
 
     // Vérifie que le message "Hello, World!" est affiché
-    const helloMessage = screen.getByText(/Hello, Sidick!/i);
+    const helloMessage = screen.getByText(/Bonjour, Aboubacar!/i);
     expect(helloMessage).toBeInTheDocument();
   });
 });
