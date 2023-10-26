@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './img/logo.svg';
 import './App.css';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
           Learn React
         </a>
         <div className="App">
-          <h1>Hello, World!</h1>
+          <h1>Hello, Sidick!</h1>
         </div>
       </header>
     </div>
