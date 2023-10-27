@@ -1,27 +1,20 @@
-# Use an official Node.js runtime as the base image
-FROM node:20.9.0
+# Utilisez une image de base avec Node.js
+FROM node:14
 
-# Set the working directory in the container
+# Définissez le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
+# Copiez les fichiers package.json et package-lock.json (si disponible) pour installer les dépendances
 COPY package*.json ./
 
-# Install dependencies
+# Installez les dépendances
 RUN npm install
 
-# Copy the rest of the application code to the container
+# Copiez le reste des fichiers de l'application
 COPY . .
 
-# Build the React application
-RUN npm run build
+# Exposez le port sur lequel votre application s'exécutera
+EXPOSE 3000
 
-# Set environment variables for configuration
-ENV NODE_ENV=production
-ENV PORT=3000
-
-# Expose the port on which the application will run
-EXPOSE $PORT
-
-# Set a default command to start the application
-CMD ["npm", "start"]
+# Commande pour exécuter votre application
+CMD ["node", "index.tsx"]

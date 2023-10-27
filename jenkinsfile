@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-        stage('Install') {
+        stage('Install dependencies') {
             steps {
                 bat 'npm install'
             }
@@ -26,14 +26,14 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Test unities') {
             steps {
                 bat 'npm test'
             }
         }
-        stage('Docker image'){
+        stage('Docker image compose'){
             steps{
-                bat 'docker -t ccidexemplereact:latest'
+                bat 'docker build -t cicdexemplerelact:latest .'
             }
         }
 
