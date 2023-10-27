@@ -36,14 +36,15 @@ pipeline {
                 bat 'docker build -t cicdexemplerelact:latest .'
             }
         }
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    // Déployez votre application sur Minikube
+                    bat 'kubectl apply -f k8s-deployment.yaml'
+                }
+            }
+        }
 
-        // stage('Archive') {
-        //     steps {
-        //         archiveArtifacts artifacts: 'build/**/*', allowEmptyArchive: true
-        //     }
-        // }
-    
-    
     }
 
 }
