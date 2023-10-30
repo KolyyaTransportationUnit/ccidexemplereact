@@ -2,13 +2,7 @@ pipeline {
     agent any
 
     stages {
-        // stage('Clean Workspace') {
-            
-        // }
         stage('Checkout') {
-            // steps {
-            //     cleanWs()
-            // }
             steps {
                 checkout scm
             }
