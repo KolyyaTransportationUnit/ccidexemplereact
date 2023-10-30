@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     // Déployez votre application sur Minikube
-                    bat 'kubectl apply -f k8s-deployment.yaml'
+                    bat 'kubectl apply -f k8s-deployment-dev.yaml'
                 }
             }
         }
