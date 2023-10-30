@@ -1,20 +1,27 @@
-# Utilisez une image de base avec Node.js
-FROM node:14
+# Use an official Node.js runtime as the base image
+FROM node:14-alpine
 
-# Définissez le répertoire de travail dans le conteneur
-WORKDIR ./src
+# Set the working directory in the container
+WORKDIR /app
 
-# Copiez les fichiers package.json et package-lock.json (si disponible) pour installer les dépendances
+# Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
-# Installez les dépendances
+# Install dependencies
 RUN npm install
 
-# Copiez le reste des fichiers de l'application
+# Copy the rest of the application code to the container
 COPY . .
 
-# Exposez le port sur lequel votre application s'exécutera
-EXPOSE 3000
+# Build the React application
+RUN npm run build
 
-# Commande pour exécuter votre application
-CMD ["node", "index.tsx"]
+# Set environment variables for configuration
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Expose the port on which the application will run
+EXPOSE $PORT
+
+# Set a default command to start the application
+CMD ["npm", "start"]
