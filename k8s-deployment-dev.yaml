@@ -18,4 +18,18 @@ spec:
       - name: mon-container
         image: cicicdexemplerelactcd:latest
         ports:
-        - containerPort: 55278
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-app-dev-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080
+  selector:
+    app: react-app-dev
+    environment: development
