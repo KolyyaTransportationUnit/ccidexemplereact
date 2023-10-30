@@ -18,4 +18,4 @@ spec:
       - name: mon-container
         image: cicicdexemplerelactcd:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8080
