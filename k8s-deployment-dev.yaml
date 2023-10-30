@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react-app-dev
+  name: ccidexemplereact
   labels:
-    app: simple-app
+    app: ccidexemplereact
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: simple-app
+      app: ccidexemplereact
   template:
     metadata:
       labels:
-        app: simple-app
+        app: ccidexemplereact
     spec:
       containers:
-      - name: react-app-dev-container
-        image: cicdexemplerelact:latest
+      - name: mon-container
+        image: cicicdexemplerelactcd:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 80

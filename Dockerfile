@@ -2,7 +2,7 @@
 FROM node:14
 
 # Définissez le répertoire de travail dans le conteneur
-WORKDIR /src
+WORKDIR ./src
 
 # Copiez les fichiers package.json et package-lock.json (si disponible) pour installer les dépendances
 COPY package*.json ./
