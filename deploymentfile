@@ -1,0 +1,29 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build & Push Docker Image') {
+            steps {
+                // Vos étapes pour construire et pousser l'image Docker
+                bat 'npm run build'
+                bat 'docker build -t cicdexemplerelact:latest .'
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                // Utilisez 'kubectl' pour déployer sur Minikube
+                sh '''
+                kubectl apply -f path/to/your/kubernetes/deployment.yaml
+                kubectl rollout status deployment/development
+                '''
+            }
+        }
+    }
+}
