@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jenkins-env1
+  namespace: default
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: jenkins-deployer-env1
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["deployments", "services", "pods"]
+  verbs: ["create", "delete", "get", "list", "patch", "update", "watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: jenkins-deployer-binding-env1
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: jenkins-env1
+  namespace: default
+roleRef:
+  kind: Role
+  name: jenkins-deployer-env1
+  apiGroup: rbac.authorization.k8s.io

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Config
+preferences: {}
+
+clusters:
+- cluster:
+    certificate-authority-data: ${CA_CRT}
+    server: ${CLUSTER_ENDPOINT}
+  name: development
+
+users:
+- name: jenkins-env1
+  user:
+    token: ${TOKEN}
+
+contexts:
+- context:
+    cluster: development
+    user: jenkins-env1
+  name: jenkins-context-env1
+
+current-context: jenkins-context-env1
+
