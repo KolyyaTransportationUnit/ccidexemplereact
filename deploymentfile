@@ -7,11 +7,21 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Install dependencies') {
+            steps {
+                bat 'npm install'
+            }
+        }
 
-        stage('Build & Push Docker Image') {
+        stage('Build') {
+            steps {
+                bat 'npm run build'
+            }
+        }
+
+        stage('Push Docker Image') {
             steps {
                 // Vos étapes pour construire et pousser l'image Docker
-                bat 'npm run build'
                 bat 'docker build -t cicdexemplerelact:latest .'
             }
         }
