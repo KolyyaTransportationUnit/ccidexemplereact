@@ -25,21 +25,30 @@ pipeline {
                 bat 'npm test'
             }
         }
-        stage('Docker image compose'){
-            steps{
-                bat 'docker build -t cicdexemplerelact:latest .'
-            }
-        }
-        stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    // Déployez votre application sur Minikube
-                    bat 'kubectl apply -f k8s-deployment-dev.yaml'
-                }
-            }
-        }
-
     }
 
+    post {
+        success {
+            script {
+                // Définit le statut du commit à "success" sur GitHub
+                setGitHubStatus('success', 'Build and tests succeeded')
+            }
+        }
+        failure {
+            script {
+                // Définit le statut du commit à "failure" sur GitHub
+                setGitHubStatus('failure', 'Build or tests failed')
+            }
+        }
+    }
 }
 
+def setGitHubStatus(String state, String description) {
+    step([
+        $class: "GitHubCommitStatusSetter",
+        reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/KolyyaTransportationUnit/ccidexemplereact"],
+        contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "ci/jenkins/build"],
+        errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
+        statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: description, state: state]] ]
+    ])
+}
