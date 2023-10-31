@@ -19,7 +19,7 @@ function App() {
           Learn React /i learn React typescript !!!
         </a>
         <div className="App">
-          <h1>Ce ci est pour voir si tout fonctionne verif</h1>
+          <h1>Ce ci est pour voir si tout fonctionne verifation </h1>
 
         </div>
       </header>
