@@ -19,7 +19,7 @@ function App() {
           Learn React /i learn React typescript !!!
         </a>
         <div className="App">
-          <h1>Bonjour Aboubacar, Comment vas tu sss ?</h1>
+          <h1>Ce ci est pour voir si tout fonctionne</h1>
 
         </div>
       </header>
